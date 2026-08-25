@@ -1,10 +1,10 @@
-import { ajoutListenersAvis } from "./avis.js"
+import { ajoutListenersAvis, ajoutListenerEnvoyerAvis} from "./avis.js"
 
 
 // Récupération des pièces depuis le fichier JSON
 const pieces = await fetch("http://localhost:8081/pieces/").then( pieces => pieces.json())
 // const pieces = await reponse.json()
-
+ajoutListenerEnvoyerAvis()
 
 
 
