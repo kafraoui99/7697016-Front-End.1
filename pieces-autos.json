@@ -32,7 +32,6 @@
         "prix": 9.60,
         "categorie": "Freinage",
         "image": "images/liquide-frein.png",
-        "description": "",
         "disponibilite": true 
     },
     {
