@@ -45,11 +45,223 @@ main {
 .fiches {
 	flex: 1;
 	margin: 8px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 4px;
 }
-.fiches img {
+.fiches article {
+	border: 1px solid black;
+	padding: 4px;
+}
+.fiches article img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	max-width: 200px;
 }
-.fiches p {
+.fiches article p {
 	margin-top: 4px;
 	margin-bottom: 4px;
 }
+.fiches article h2 {
+	text-align: center;
+}
+/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Work+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+	--ink: #1B1E22;
+	--paper: #F5F2EA;
+	--panel: #FFFFFF;
+	--border: #DAD4C4;
+	--orange: #E15A25;
+	--orange-dark: #A63E15;
+	--steel: #2F5D6B;
+	--steel-dark: #1D3B44;
+	--rust: #A83226;
+	--rust-dark: #6E1F17;
+	--text-muted: #5B5A55;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	max-width: 1200px;
+	margin: auto;
+	padding: 16px;
+	font-family: 'Work Sans', sans-serif;
+	background-color: var(--paper);
+	color: var(--ink);
+}
+
+header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 24px;
+	padding: 10px 20px;
+	background-color: var(--ink);
+	border-bottom: 5px solid var(--orange);
+	text-align: center;
+	color: white;
+}
+header img {
+	height: 48px;
+	margin-left: 1rem;
+	padding: 6px;
+	background-color: var(--paper);
+	border-radius: 6px;
+}
+header h1 {
+	flex-grow: 1;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 600;
+	font-size: 1.6rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 16px;
+}
+
+.filtres {
+	border: 1px solid var(--border);
+	border-radius: 6px;
+	background-color: var(--panel);
+	background-image: radial-gradient(var(--border) 1px, transparent 1px);
+	background-size: 14px 14px;
+	margin: 8px;
+	padding: 16px;
+	min-width: 260px;
+	min-height: 400px;
+}
+.filtres h3 {
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: 1rem;
+	color: var(--ink);
+	padding-bottom: 10px;
+	margin-bottom: 12px;
+	border-bottom: 3px solid var(--orange);
+	background-color: var(--panel);
+	display: inline-block;
+	width: 100%;
+}
+
+.fiches {
+	flex: 1;
+	margin: 8px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 20px;
+}
+
+/* Chaque fiche produit : j'ai supposé que chaque carte est un enfant direct
+   de .fiches (ex: <div class="fiche">...</div>). Si vos cartes portent un
+   autre nom de classe, renommez ".fiche" ci-dessous en conséquence. */
+.fiche {
+	position: relative;
+	overflow: hidden;
+	background-color: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 20px 18px 18px;
+	text-align: center;
+	box-shadow: 0 1px 2px rgba(27, 30, 34, 0.06);
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.fiche:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 6px 14px rgba(27, 30, 34, 0.12);
+}
+
+.fiches img,
+.fiche img {
+	max-width: 140px;
+	padding: 18px;
+	margin-bottom: 8px;
+	border-radius: 50%;
+	background-color: rgba(47, 93, 107, 0.08);
+}
+
+.fiche h2,
+.fiche h3 {
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+	font-size: 1.15rem;
+	letter-spacing: 0.02em;
+	color: var(--ink);
+	margin: 4px 0 10px;
+}
+
+.fiches p,
+.fiche p {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	font-size: 0.92rem;
+	line-height: 1.4;
+	color: var(--text-muted);
+	text-align: left;
+}
+
+/* Ligne du prix : on suppose qu'elle est le premier <p> de la fiche
+   (c'est le cas dans votre maquette : "Prix : ...") */
+.fiche p:first-of-type {
+	font-family: 'IBM Plex Mono', monospace;
+	font-weight: 600;
+	font-size: 1.05rem;
+	color: var(--orange-dark);
+	text-align: center;
+}
+
+/* Étiquette de stock, façon tampon d'inventaire d'atelier : on suppose que
+   c'est le dernier <p> de la fiche ("En stock" / "Rupture de stock").
+   Par défaut elle est neutre (bleu acier) car le CSS seul ne peut pas lire
+   le texte pour choisir orange/rouge automatiquement. */
+.fiche p:last-of-type {
+	position: absolute;
+	top: 14px;
+	right: -34px;
+	width: 140px;
+	transform: rotate(35deg);
+	background-color: var(--steel);
+	color: white;
+	font-family: 'Oswald', sans-serif;
+	font-size: 0.68rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 4px 0;
+	margin: 0;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+}
+
+/* Optionnel : si vous ajoutez un attribut data-stock="rupture" sur .fiche
+   quand la pièce n'est plus disponible, l'étiquette passera en rouge :
+   <div class="fiche" data-stock="rupture"> ... </div> */
+.fiche[data-stock="rupture"] p:last-of-type {
+	background-color: var(--rust);
+}
+.fiche[data-stock="rupture"] {
+	opacity: 0.75;
+}
+
+@media (max-width: 800px) {
+	main {
+		flex-direction: column;
+	}
+	.filtres {
+		min-width: 0;
+		width: 100%;
+		min-height: auto;
+	}
+} */
