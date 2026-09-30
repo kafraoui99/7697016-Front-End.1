@@ -1,4 +1,4 @@
-import { ajoutListenersAvis, ajoutListenerEnvoyerAvis, afficheAvis} from "./avis.js"
+import { ajoutListenersAvis, ajoutListenerEnvoyerAvis, afficheAvis, afficherGraphiqueAvis , afficherGraphiqueAvisDispo} from "./avis.js"
 
 
 // Récupération des pièces éventuellement stockées dans le localStorage
@@ -30,7 +30,8 @@ function genererPieces(pieces) {
         const sectionFiche = document.querySelector(".fiches")
 
         const pieceElement = document.createElement("article")
-        
+        pieceElement.dataset.id = article.id
+
 
         
         const imageElement = document.createElement("img")

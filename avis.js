@@ -19,7 +19,15 @@ export function ajoutListenersAvis() {
     }
  }
 export function afficheAvis(pieceElement, avis) {
+
+        // Si un bloc d'avis existe déjà pour cette pièce, on le supprime avant d'en recréer un
+        const ancienAvisElement = pieceElement.querySelector(".avis-liste");
+        if (ancienAvisElement !== null) {
+            ancienAvisElement.remove();
+        }
+
         const avisElement = document.createElement("p");
+        avisElement.classList.add("avis-liste");
         for (let i = 0; i < avis.length; i++) {
             avisElement.innerHTML += `<b>${avis[i].utilisateur}:</b> ${avis[i].commentaire} <br>`;
         }
