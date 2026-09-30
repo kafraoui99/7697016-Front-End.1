@@ -162,3 +162,6 @@ const btnMaj = document.querySelector(".btn-maj")
 btnMaj.addEventListener("click", async function() {
     pieces = window.localStorage.removeItem("pieces");
   })
+
+await afficherGraphiqueAvis();
+await afficherGraphiqueAvisDispo(pieces);
